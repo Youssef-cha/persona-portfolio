@@ -276,73 +276,127 @@ const ContactSection = () => {
               </h3>
 
               {isSubmitted ? (
-                <div className="text-center py-12">
-                  <CheckCircle className="mx-auto text-green-400 mb-4" size={64} />
-                  <h4 className="text-2xl font-bold text-green-400 mb-2">Message Envoyé !</h4>
-                  <p className="text-gray-300">Je vous répondrai dans les plus brefs délais.</p>
+                <div className="text-center py-12 animate-fade-in">
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-green-500/20 rounded-full blur-xl animate-pulse"></div>
+                    <CheckCircle className="mx-auto text-green-400 mb-4 relative z-10 animate-bounce-subtle" size={80} />
+                  </div>
+                  <h4 className="text-3xl font-bold text-green-400 mb-3 animate-slide-up">Message Envoyé !</h4>
+                  <p className="text-gray-300 text-lg animate-slide-up-delayed">Je vous répondrai dans les plus brefs délais.</p>
+                  <div className="mt-6 w-16 h-1 bg-gradient-to-r from-green-400 to-emerald-500 mx-auto rounded-full animate-expand"></div>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-gray-300 text-sm font-medium mb-2">Nom</label>
-                      <input
-                        type="text"
+                <form onSubmit={handleSubmit} className="space-y-8">
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="space-y-2 group">
+                      <Label htmlFor="name" className="text-gray-300 text-sm font-medium transition-colors group-hover:text-emerald-400">
+                        Nom complet
+                      </Label>
+                      <Input
+                        id="name"
                         name="name"
+                        type="text"
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/20 transition-all"
-                        placeholder="Votre nom"
+                        className="h-12 bg-white/10 border-white/20 text-white placeholder:text-gray-400 
+                                 focus:border-emerald-400 focus:ring-emerald-400/20 
+                                 transition-all duration-300 hover:bg-white/15
+                                 focus:bg-white/15 backdrop-blur-sm"
+                        placeholder="Votre nom complet"
+                        disabled={isSubmitting}
                       />
                     </div>
-                    <div>
-                      <label className="block text-gray-300 text-sm font-medium mb-2">Email</label>
-                      <input
-                        type="email"
+                    <div className="space-y-2 group">
+                      <Label htmlFor="email" className="text-gray-300 text-sm font-medium transition-colors group-hover:text-blue-400">
+                        Adresse email
+                      </Label>
+                      <Input
+                        id="email"
                         name="email"
+                        type="email"
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/20 transition-all"
+                        className="h-12 bg-white/10 border-white/20 text-white placeholder:text-gray-400 
+                                 focus:border-blue-400 focus:ring-blue-400/20 
+                                 transition-all duration-300 hover:bg-white/15
+                                 focus:bg-white/15 backdrop-blur-sm"
                         placeholder="votre@email.com"
+                        disabled={isSubmitting}
                       />
                     </div>
                   </div>
 
-                  <div>
-                    <label className="block text-gray-300 text-sm font-medium mb-2">Sujet</label>
-                    <input
-                      type="text"
+                  <div className="space-y-2 group">
+                    <Label htmlFor="subject" className="text-gray-300 text-sm font-medium transition-colors group-hover:text-purple-400">
+                      Sujet du message
+                    </Label>
+                    <Input
+                      id="subject"
                       name="subject"
+                      type="text"
                       value={formData.subject}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/20 transition-all"
+                      className="h-12 bg-white/10 border-white/20 text-white placeholder:text-gray-400 
+                               focus:border-purple-400 focus:ring-purple-400/20 
+                               transition-all duration-300 hover:bg-white/15
+                               focus:bg-white/15 backdrop-blur-sm"
                       placeholder="Sujet de votre message"
+                      disabled={isSubmitting}
                     />
                   </div>
 
-                  <div>
-                    <label className="block text-gray-300 text-sm font-medium mb-2">Message</label>
-                    <textarea
+                  <div className="space-y-2 group">
+                    <Label htmlFor="message" className="text-gray-300 text-sm font-medium transition-colors group-hover:text-orange-400">
+                      Votre message
+                    </Label>
+                    <Textarea
+                      id="message"
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
                       rows={6}
                       required
-                      className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/20 transition-all resize-none"
-                      placeholder="Votre message..."
-                    ></textarea>
+                      className="bg-white/10 border-white/20 text-white placeholder:text-gray-400 
+                               focus:border-orange-400 focus:ring-orange-400/20 
+                               transition-all duration-300 hover:bg-white/15
+                               focus:bg-white/15 backdrop-blur-sm resize-none"
+                      placeholder="Décrivez votre projet, vos questions ou simplement dites bonjour..."
+                      disabled={isSubmitting}
+                    />
                   </div>
 
-                  <button
+                  <Button
                     type="submit"
-                    className="interactive w-full bg-gradient-to-r from-emerald-500 to-blue-500 hover:from-emerald-600 hover:to-blue-600 px-6 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center gap-2"
+                    disabled={isSubmitting}
+                    className="interactive w-full h-14 bg-gradient-to-r from-emerald-500 to-blue-500 
+                             hover:from-emerald-600 hover:to-blue-600 
+                             disabled:from-gray-500 disabled:to-gray-600
+                             text-white font-semibold text-lg
+                             transition-all duration-300 transform hover:scale-[1.02] 
+                             hover:shadow-2xl disabled:hover:scale-100
+                             disabled:cursor-not-allowed
+                             focus:ring-4 focus:ring-emerald-500/30
+                             backdrop-blur-sm border-0"
                   >
-                    <Send size={18} />
-                    Envoyer le Message
-                  </button>
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="animate-spin" size={20} />
+                        Envoi en cours...
+                      </>
+                    ) : (
+                      <>
+                        <Send size={20} />
+                        Envoyer le Message
+                      </>
+                    )}
+                  </Button>
+
+                  <p className="text-center text-gray-400 text-sm">
+                    En soumettant ce formulaire, vous acceptez d'être contacté par email.
+                  </p>
                 </form>
               )}
             </div>
