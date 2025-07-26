@@ -46,54 +46,63 @@ const AboutSection = () => {
     return colors[color] || colors.blue;
   };
 
-  const SkillBar = ({ skill, index }) => (
-    <div className={`transform transition-all duration-700 delay-${index * 100} ${isVisible ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'}`}>
-      <div className="flex justify-between mb-2">
-        <span className="text-gray-700 font-medium">{skill.name}</span>
-        <span className="text-gray-500">{skill.level}%</span>
+  const SkillCard = ({ skill, index }) => {
+    const levelText = skill.level >= 90 ? 'Expert' : skill.level >= 75 ? 'Avancé' : skill.level >= 60 ? 'Intermédiaire' : 'Base';
+    
+    return (
+      <div 
+        className={`transform transition-opacity duration-500 ease-out opacity-0 ${isVisible ? '!opacity-100' : ''}`}
+        style={{ transitionDelay: `${index * 100}ms` }}
+      >
+        <div className="flex items-center gap-3 bg-white/80 p-3 rounded-lg shadow-sm hover:shadow transition-shadow">
+          <div className={`w-1.5 h-12 rounded-full bg-gradient-to-b ${getColorClasses(skill.color)}`} />
+          <div className="flex-1 flex justify-between items-center">
+            <h4 className="text-gray-800 font-medium">{skill.name}</h4>
+            <span className={`text-sm px-3 py-1 rounded-full ${
+              skill.level >= 90 ? 'bg-emerald-100 text-emerald-700' :
+              skill.level >= 75 ? 'bg-blue-100 text-blue-700' :
+              skill.level >= 60 ? 'bg-orange-100 text-orange-700' :
+              'bg-gray-100 text-gray-700'
+            }`}>
+              {levelText}
+            </span>
+          </div>
+        </div>
       </div>
-      <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
-        <div 
-          className={`h-full bg-gradient-to-r ${getColorClasses(skill.color)} rounded-full transition-all duration-1000 delay-${index * 200}`}
-          style={{ 
-            width: isVisible ? `${skill.level}%` : '0%',
-            animation: isVisible ? 'glow 2s ease-in-out infinite alternate' : 'none'
-          }}
-        ></div>
-      </div>
-    </div>
-  );
+    );
+  };
 
   return (
-    <section ref={sectionRef} id="about" className="min-h-screen bg-gradient-to-br from-gray-50 to-white py-20">
-      <div className="container mx-auto px-6">
-        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-          <h2 className="text-5xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent mb-4">
+    <section ref={sectionRef} id="about" className="min-h-screen bg-gradient-to-br from-gray-50 to-white py-12 sm:py-16 lg:py-20">
+      <div className="container mx-auto">
+        <div className={`text-center mb-8 sm:mb-16 transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent mb-3 sm:mb-4">
             À Propos de Moi
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-4">
             Découvrez mon parcours, mes compétences et ma passion pour l'enseignement des mathématiques
           </p>
         </div>
 
         {/* Tabs Navigation */}
-        <div className="flex flex-wrap justify-center mb-12">
+        <div className="flex flex-wrap justify-center gap-3 px-4 mb-8 sm:mb-12">
           {tabs.map((tab, index) => {
             const Icon = tab.icon;
             return (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`interactive flex items-center gap-2 px-6 py-3 mx-2 mb-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 ${
+                className={`flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-medium transition-all duration-300 ${
                   activeTab === tab.id
-                    ? `bg-gradient-to-r ${getColorClasses(tab.color)} text-white shadow-lg`
-                    : 'bg-white text-gray-600 hover:bg-gray-100 border-2 border-gray-200'
+                    ? `bg-gradient-to-r ${getColorClasses(tab.color)} text-white shadow-md`
+                    : 'bg-white/80 text-gray-600 hover:bg-white'
                 }`}
                 style={{
-                  animation: isVisible ? `slideInUp ${0.5 + index * 0.1}s ease-out both` : 'none'
+                  opacity: 0,
+                  animation: isVisible ? `fadeIn 0.5s ease-out forwards ${index * 0.1}s` : 'none'
                 }}
               >
-                <Icon size={18} />
+                <Icon size={16} />
                 {tab.label}
               </button>
             );
@@ -172,29 +181,29 @@ const AboutSection = () => {
 
           {/* Skills Tab */}
           {activeTab === 'skills' && (
-            <div className="grid md:grid-cols-2 gap-12">
+            <div className="space-y-8">
               {/* Technical Skills */}
-              <div className="bg-white p-8 rounded-2xl shadow-lg">
-                <h3 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-3">
-                  <Award className="text-emerald-500" size={28} />
+              <div className="bg-white/20 backdrop-blur-sm p-6 sm:p-8 rounded-2xl">
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 flex items-center gap-3">
+                  <Award className="text-emerald-500" size={24} />
                   Compétences Techniques
                 </h3>
-                <div className="space-y-6">
+                <div className="grid gap-3">
                   {portfolioData.skills.techniques.map((skill, index) => (
-                    <SkillBar key={index} skill={skill} index={index} />
+                    <SkillCard key={index} skill={skill} index={index} />
                   ))}
                 </div>
               </div>
 
               {/* Soft Skills */}
-              <div className="bg-white p-8 rounded-2xl shadow-lg">
-                <h3 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-3">
-                  <Users className="text-purple-500" size={28} />
+              <div className="bg-white/20 backdrop-blur-sm p-6 sm:p-8 rounded-2xl">
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 flex items-center gap-3">
+                  <Users className="text-purple-500" size={24} />
                   Compétences Humaines
                 </h3>
-                <div className="space-y-6">
+                <div className="grid gap-3">
                   {portfolioData.skills.soft.map((skill, index) => (
-                    <SkillBar key={index} skill={skill} index={index + 4} />
+                    <SkillCard key={index} skill={skill} index={index + 4} />
                   ))}
                 </div>
               </div>
@@ -225,24 +234,9 @@ const AboutSection = () => {
       </div>
 
       <style jsx>{`
-        @keyframes slideInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        
-        @keyframes glow {
-          from {
-            box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
-          }
-          to {
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.8), 0 0 30px rgba(59, 130, 246, 0.4);
-          }
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
         }
       `}</style>
     </section>

@@ -8,7 +8,6 @@ export const portfolioData = {
     phone: "+212 6 12 34 56 78",
     title: "Professeur de Mathématiques",
     heroDescription: "Passionné par l'enseignement des mathématiques, je transforme les concepts abstraits en expériences d'apprentissage concrètes et engageantes.",
-    profileImage: "https://picsum.photos/400/400?random=1",
     cvLink: "/Karim_CV.pdf"
   },
   

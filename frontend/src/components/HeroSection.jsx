@@ -132,7 +132,7 @@ const HeroSection = () => {
             {/* Profile Image */}
             <div className="relative z-10 w-80 h-80 rounded-full overflow-hidden bg-gradient-to-br from-emerald-400 to-blue-500 p-2">
               <img
-                src={portfolioData.personal.profileImage}
+                src="../../public/karim-portrait.jpg"
                 alt={portfolioData.personal.name}
                 className="w-full h-full object-cover rounded-full hover:scale-110 transition-transform duration-500"
               />
