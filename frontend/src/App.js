@@ -1,22 +1,57 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CustomCursor from "./components/CustomCursor";
 import HeroSection from "./components/HeroSection";
+import AboutSection from "./components/AboutSection";
+import TestimonialsSection from "./components/TestimonialsSection";
+import ContactSection from "./components/ContactSection";
+import Footer from "./components/Footer";
 
 const Home = () => {
+  useEffect(() => {
+    // Smooth scroll behavior
+    document.documentElement.style.scrollBehavior = 'smooth';
+    
+    // Add scroll progress indicator
+    const progressBar = document.createElement('div');
+    progressBar.style.cssText = `
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      background: linear-gradient(90deg, #10b981, #3b82f6);
+      z-index: 10000;
+      transition: width 0.1s ease;
+    `;
+    document.body.appendChild(progressBar);
+
+    const handleScroll = () => {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      progressBar.style.width = scrolled + '%';
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (progressBar.parentNode) {
+        progressBar.parentNode.removeChild(progressBar);
+      }
+    };
+  }, []);
+
   return (
-    <div className="min-h-screen bg-gray-900">
+    <div className="min-h-screen">
       <CustomCursor />
       <HeroSection />
-      
-      {/* About Section Placeholder */}
-      <section id="about" className="min-h-screen bg-white flex items-center justify-center">
-        <div className="text-center">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">À Propos</h2>
-          <p className="text-xl text-gray-600">Plus de contenu à venir...</p>
-        </div>
-      </section>
+      <AboutSection />
+      <TestimonialsSection />
+      <ContactSection />
+      <Footer />
     </div>
   );
 };
