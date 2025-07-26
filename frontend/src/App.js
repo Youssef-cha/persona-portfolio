@@ -53,6 +53,7 @@ const Home = () => {
       <TestimonialsSection />
       <ContactSection />
       <Footer />
+      <Toaster />
     </div>
   );
 };
