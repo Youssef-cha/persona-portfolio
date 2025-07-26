@@ -409,6 +409,166 @@ const ContactSection = () => {
           0%, 100% { transform: translateY(0px) rotate(0deg); }
           50% { transform: translateY(-15px) rotate(180deg); }
         }
+
+        @keyframes morphing {
+          0% { 
+            transform: scale(1) rotate(0deg); 
+            border-radius: 50%; 
+          }
+          25% { 
+            transform: scale(1.2) rotate(90deg); 
+            border-radius: 30%; 
+          }
+          50% { 
+            transform: scale(0.8) rotate(180deg); 
+            border-radius: 10%; 
+          }
+          75% { 
+            transform: scale(1.1) rotate(270deg); 
+            border-radius: 60%; 
+          }
+          100% { 
+            transform: scale(1) rotate(360deg); 
+            border-radius: 50%; 
+          }
+        }
+
+        @keyframes morphing-delayed {
+          0% { 
+            transform: scale(1) rotate(0deg); 
+            border-radius: 20%; 
+          }
+          30% { 
+            transform: scale(1.3) rotate(120deg); 
+            border-radius: 80%; 
+          }
+          60% { 
+            transform: scale(0.7) rotate(240deg); 
+            border-radius: 40%; 
+          }
+          100% { 
+            transform: scale(1) rotate(360deg); 
+            border-radius: 20%; 
+          }
+        }
+
+        @keyframes float-particles {
+          0% { 
+            transform: translateY(0px) translateX(0px) scale(0.5); 
+            opacity: 0.3; 
+          }
+          50% { 
+            transform: translateY(-30px) translateX(20px) scale(1); 
+            opacity: 1; 
+          }
+          100% { 
+            transform: translateY(-60px) translateX(-10px) scale(0.3); 
+            opacity: 0; 
+          }
+        }
+
+        @keyframes enhanced-float {
+          0%, 100% { 
+            transform: translateY(0px) translateX(0px) rotate(0deg) scale(1); 
+          }
+          25% { 
+            transform: translateY(-20px) translateX(10px) rotate(90deg) scale(1.1); 
+          }
+          50% { 
+            transform: translateY(-10px) translateX(-15px) rotate(180deg) scale(0.9); 
+          }
+          75% { 
+            transform: translateY(-25px) translateX(5px) rotate(270deg) scale(1.05); 
+          }
+        }
+
+        @keyframes flow-lines {
+          0% { stroke-dasharray: 0 1000; }
+          50% { stroke-dasharray: 1000 1000; }
+          100% { stroke-dasharray: 1000 0; }
+        }
+
+        @keyframes flow-lines-delayed {
+          0% { stroke-dasharray: 0 800; }
+          60% { stroke-dasharray: 800 800; }
+          100% { stroke-dasharray: 800 0; }
+        }
+
+        @keyframes fade-in {
+          from { opacity: 0; transform: scale(0.9); }
+          to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes bounce-subtle {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-5px); }
+        }
+
+        @keyframes slide-up {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slide-up-delayed {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes expand {
+          from { width: 0; }
+          to { width: 4rem; }
+        }
+
+        .animate-morphing {
+          animation: morphing 8s ease-in-out infinite;
+        }
+
+        .animate-morphing-delayed {
+          animation: morphing-delayed 10s ease-in-out infinite;
+        }
+
+        .animate-float-particles {
+          animation: float-particles linear infinite;
+        }
+
+        .animate-enhanced-float {
+          animation: enhanced-float ease-in-out infinite;
+        }
+
+        .animate-flow-lines {
+          animation: flow-lines 4s ease-in-out infinite;
+        }
+
+        .animate-flow-lines-delayed {
+          animation: flow-lines-delayed 6s ease-in-out infinite 2s;
+        }
+
+        .animate-fade-in {
+          animation: fade-in 0.8s ease-out;
+        }
+
+        .animate-bounce-subtle {
+          animation: bounce-subtle 2s ease-in-out infinite;
+        }
+
+        .animate-slide-up {
+          animation: slide-up 0.6s ease-out;
+        }
+
+        .animate-slide-up-delayed {
+          animation: slide-up-delayed 0.8s ease-out 0.3s both;
+        }
+
+        .animate-expand {
+          animation: expand 1s ease-out 0.5s both;
+        }
+
+        .bg-grid-pattern {
+          background-image: 
+            linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
+          background-size: 50px 50px;
+        }
       `}</style>
     </section>
   );
