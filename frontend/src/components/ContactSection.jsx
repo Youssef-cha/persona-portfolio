@@ -91,26 +91,73 @@ const ContactSection = () => {
 
   return (
     <section ref={sectionRef} id="contact" className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white py-20 relative overflow-hidden">
-      {/* Animated Background */}
+      {/* Enhanced Creative Background */}
       <div className="absolute inset-0">
+        {/* Animated geometric shapes */}
         <div className="absolute top-20 right-20 w-64 h-64 bg-gradient-to-r from-blue-400/20 to-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-32 left-32 w-96 h-96 bg-gradient-to-r from-emerald-400/15 to-teal-500/15 rounded-full blur-3xl animate-pulse delay-1000"></div>
         
-        {/* Floating Math Symbols */}
-        {['∮', '∇', '∀', '∃', '⊕', '⊗', '∂', '∝'].map((symbol, index) => (
+        {/* Morphing shapes */}
+        <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-gradient-to-r from-pink-500/20 to-orange-500/20 rounded-full animate-morphing"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-24 h-24 bg-gradient-to-r from-yellow-500/20 to-red-500/20 rounded-lg animate-morphing-delayed transform rotate-45"></div>
+        
+        {/* Floating particles */}
+        {Array.from({ length: 20 }).map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-2 h-2 bg-white/30 rounded-full animate-float-particles"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 5}s`,
+              animationDuration: `${5 + Math.random() * 10}s`
+            }}
+          />
+        ))}
+        
+        {/* Grid pattern */}
+        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+        
+        {/* Floating Math Symbols with enhanced animation */}
+        {['∮', '∇', '∀', '∃', '⊕', '⊗', '∂', '∝', '∈', '∋', '⊂', '⊃'].map((symbol, index) => (
           <div
             key={symbol}
-            className="absolute text-2xl text-white/5 font-bold select-none"
+            className="absolute text-2xl text-white/8 font-bold select-none animate-enhanced-float"
             style={{
-              left: `${15 + (index * 10)}%`,
-              top: `${10 + (index * 8)}%`,
-              animation: `float ${4 + (index * 0.3)}s ease-in-out infinite`,
-              animationDelay: `${index * 0.3}s`
+              left: `${15 + (index * 7)}%`,
+              top: `${10 + (index * 6)}%`,
+              animationDelay: `${index * 0.4}s`,
+              animationDuration: `${6 + (index * 0.2)}s`
             }}
           >
             {symbol}
           </div>
         ))}
+        
+        {/* Flowing lines */}
+        <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="rgba(59, 130, 246, 0.3)" />
+              <stop offset="50%" stopColor="rgba(139, 92, 246, 0.2)" />
+              <stop offset="100%" stopColor="rgba(239, 68, 68, 0.1)" />
+            </linearGradient>
+          </defs>
+          <path
+            d="M0,50 Q200,20 400,50 T800,50 T1200,50 T1600,50 T2000,50"
+            stroke="url(#lineGradient)"
+            strokeWidth="2"
+            fill="none"
+            className="animate-flow-lines"
+          />
+          <path
+            d="M0,150 Q300,120 600,150 T1200,150 T1800,150"
+            stroke="url(#lineGradient)"
+            strokeWidth="1.5"
+            fill="none"
+            className="animate-flow-lines-delayed"
+          />
+        </svg>
       </div>
 
       <div className="relative z-10 container mx-auto px-6">
