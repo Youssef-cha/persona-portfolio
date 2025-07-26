@@ -1,16 +1,11 @@
 import React, { useEffect } from "react";
-import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import CustomCursor from "./components/CustomCursor";
-import HeroSection from "./components/HeroSection";
-import AboutSection from "./components/AboutSection";
-import MathGamesSection from "./components/MathGamesSection";
-import TestimonialsSection from "./components/TestimonialsSection";
-import ContactSection from "./components/ContactSection";
-import Footer from "./components/Footer";
-import { MobileNavigation, MobileHeroSection } from "./components/MobileDesign";
-import { MathShapesBackground } from "./components/MathShapes";
-import { Toaster } from "./components/ui/toaster";
+import CustomCursor from "../components/CustomCursor";
+import HeroSection from "../components/HeroSection";
+import AboutSection from "../components/AboutSection";
+import TestimonialsSection from "../components/TestimonialsSection";
+import ContactSection from "../components/ContactSection";
+import Footer from "../components/Footer";
+import { Toaster } from "../components/ui/toaster";
 
 const Home = () => {
   useEffect(() => {
@@ -61,18 +56,4 @@ const Home = () => {
   );
 };
 
-function App() {
-  return (
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />}>
-            <Route index element={<Home />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </div>
-  );
-}
-
-export default App;
+export default Home;
