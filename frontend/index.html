@@ -9,40 +9,24 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/index.jsx"></script>
-    <script>
-      window.addEventListener("load", function () {
-        (function (w, d, s, o, f, js, fjs) {
-          w["botsonic_widget"] = o;
-          w[o] =
-            w[o] ||
-            function () {
-              (w[o].q = w[o].q || []).push(arguments);
-            };
-          js = d.createElement(s);
-          fjs = d.getElementsByTagName(s)[0];
-          js.id = o;
-          js.src = f;
-          js.async = 1;
-          js.onload = function () {
-            try {
-              Botsonic("init", {
-                serviceBaseUrl: "https://api-bot.writesonic.com",
-                token: "e41c7914-7e4d-4c5b-b3a5-2ab9ce5141b3",
-              });
-              console.log("Botsonic initialized successfully");
-            } catch (error) {
-              console.error("Error initializing Botsonic:", error);
-            }
-          };
-          fjs.parentNode.insertBefore(js, fjs);
-        })(
-          window,
-          document,
-          "script",
-          "Botsonic",
-          "https://widget.botsonic.com/CDN/botsonic.min.js"
-        );
-      });
-    </script>
+   <script>
+  (function (w, d, s, o, f, js, fjs) {
+    w["botsonic_widget"] = o;
+    w[o] =
+      w[o] ||
+      function () {
+        (w[o].q = w[o].q || []).push(arguments);
+      };
+    (js = d.createElement(s)), (fjs = d.getElementsByTagName(s)[0]);
+    js.id = o;
+    js.src = f;
+    js.async = 1;
+    fjs.parentNode.insertBefore(js, fjs);
+  })(window, document, "script", "Botsonic", "https://widget.botsonic.com/CDN/botsonic.min.js");
+  Botsonic("init", {
+    serviceBaseUrl: "https://api-bot.writesonic.com",
+    token: "e41c7914-7e4d-4c5b-b3a5-2ab9ce5141b3",
+  });
+</script>
   </body>
 </html>
