@@ -1,6 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Mail, Phone, MapPin, Download, Github, Linkedin, Instagram, Send, CheckCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Download, Github, Linkedin, Instagram, Send, CheckCircle, Loader2, AlertCircle } from 'lucide-react';
 import { portfolioData } from '../data/mock';
+import { Button } from './ui/button';
+import { Input } from './ui/input';
+import { Textarea } from './ui/textarea';
+import { Label } from './ui/label';
+import { useToast } from '../hooks/use-toast';
 
 const ContactSection = () => {
   const [isVisible, setIsVisible] = useState(false);
