@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heart, Mail, Phone, MapPin, Github, Linkedin, Instagram, BookOpen } from 'lucide-react';
+import { Heart, Mail, Phone, MapPin, Linkedin, Instagram, BookOpen } from 'lucide-react';
 import { portfolioData } from '../data/mock';
 
 const Footer = () => {
@@ -14,7 +14,6 @@ const Footer = () => {
 
   const socialLinks = [
     { icon: Linkedin, href: portfolioData.socials.linkedin, name: 'LinkedIn', color: 'hover:text-blue-400' },
-    { icon: Github, href: portfolioData.socials.github, name: 'GitHub', color: 'hover:text-gray-400' },
     { icon: Instagram, href: portfolioData.socials.instagram, name: 'Instagram', color: 'hover:text-pink-400' }
   ];
 

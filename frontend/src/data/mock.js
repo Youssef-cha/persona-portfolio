@@ -83,9 +83,8 @@ export const portfolioData = {
   },
   
   socials: {
-    linkedin: "https://www.linkedin.com/in/karim-elmansouri",
+    linkedin: "https://www.linkedin.com/in/karim-el-mansouri-083310377/",
     instagram: "https://www.instagram.com/karim.elmansouri",
-    github: "https://github.com/karim-elmansouri"
   },
   
   testimonials: [

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Mail, Phone, MapPin, Download, Github, Linkedin, Instagram, Send, CheckCircle, Loader2, AlertCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Download, Linkedin, Instagram, Send, CheckCircle, Loader2, AlertCircle } from 'lucide-react';
 import { portfolioData } from '../data/mock';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
@@ -85,7 +85,6 @@ const ContactSection = () => {
 
   const socialIcons = [
     { icon: Linkedin, url: portfolioData.socials.linkedin, color: 'from-blue-600 to-blue-800', name: 'LinkedIn' },
-    { icon: Github, url: portfolioData.socials.github, color: 'from-gray-700 to-gray-900', name: 'GitHub' },
     { icon: Instagram, url: portfolioData.socials.instagram, color: 'from-pink-500 to-purple-600', name: 'Instagram' }
   ];
 
@@ -213,10 +212,10 @@ const ContactSection = () => {
 
               {/* CV Download */}
               <div className="mt-8 pt-6 border-t border-white/20">
-                <button className="interactive w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 px-6 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center gap-2">
+                <a target='_blink' href='/KM_cv.pdf' className="interactive w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 px-6 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center gap-2">
                   <Download size={18} />
                   Télécharger mon CV
-                </button>
+                </a>
               </div>
 
               {/* Social Links */}

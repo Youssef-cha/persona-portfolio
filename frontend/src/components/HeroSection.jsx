@@ -111,10 +111,10 @@ const HeroSection = () => {
             <button className="interactive bg-gradient-to-r from-emerald-500 to-blue-500 hover:from-emerald-600 hover:to-blue-600 px-6 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
               Découvrir mon parcours
             </button>
-            <button className="interactive flex items-center gap-2 border-2 border-white/30 hover:border-white px-6 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 backdrop-blur-sm">
+            <a target='_blink' href='/KM_cv.pdf' className="interactive flex items-center gap-2 border-2 border-white/30 hover:border-white px-6 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 backdrop-blur-sm">
               <Download size={18} />
               Télécharger CV
-            </button>
+            </a>
           </div>
         </div>
 
